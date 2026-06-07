@@ -68,10 +68,8 @@ export default async function Home() {
             effortless savings with Deal Drop.
           </p>
 
-          {/* Add Product Form */}
           <AddProductForm user={user} />
 
-          {/* Features */}
           {products.length === 0 && (
             <div className="grid md:grid-cols-3 gap-6 max-w-4xl mx-auto mt-16">
               {FEATURES.map(({ icon: Icon, title, description }) => (
@@ -93,7 +91,6 @@ export default async function Home() {
             </div>
           )}
 
-          {/* Products Grid */}
           {user && products.length > 0 && (
             <div className="mt-16">
               <div className="flex items-center justify-between mb-6 max-w-4xl mx-auto">
@@ -113,7 +110,6 @@ export default async function Home() {
             </div>
           )}
 
-          {/* Empty State */}
           {user && products.length === 0 && (
             <div className="max-w-2xl mx-auto mt-16 pb-4">
               <div className="bg-white rounded-xl border-2 border-dashed border-gray-300 p-12">
