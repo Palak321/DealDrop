@@ -1,36 +1,72 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+## 🚀 **DealDrop**
 
-## Getting Started
+DealDrop is a full-stack price tracking application that helps users monitor product prices across e-commerce websites and receive email notifications when prices drop.
 
-First, run the development server:
+Built with Next.js, Supabase, Firecrawl, and Tailwind CSS, the application automates product price monitoring, eliminating the need for users to manually check prices repeatedly.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## ✨ Features
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+- 🔍 Track products from multiple e-commerce websites
+- 📈 View product price history and trends
+- 🔐 Secure authentication using Google OAuth
+- ⏰ Automated price monitoring through scheduled cron jobs
+- 📧 Email notifications on price drops
+- 📱 Responsive UI for desktop and mobile devices
+- 🗄️ Secure data storage using Supabase
+- 🚀 Automatic deployment with Vercel
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+## 🛠️ Tech Stack
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+| Category | Technologies |
+|-----------|-------------|
+| Frontend | Next.js, React, Tailwind CSS, shadcn/ui |
+| Backend | Next.js API Routes, Server Actions |
+| Database | Supabase, PostgreSQL |
+| Authentication | Google OAuth, Supabase Auth |
+| External Services | Firecrawl, Resend |
+| Deployment | Vercel |
 
-## Learn More
+## 🗄️ Database Design
 
-To learn more about Next.js, take a look at the following resources:
+The application uses **Supabase PostgreSQL** to store product information and maintain historical price records.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### Products Table
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+| Field | Type | Description |
+|---------|---------|-------------|
+| id | UUID | Unique product identifier |
+| user_id | UUID | Associated user |
+| url | TEXT | Product URL |
+| name | TEXT | Product name |
+| current_price | NUMERIC | Latest tracked price |
+| currency | TEXT | Product currency |
+| image_url | TEXT | Product image |
+| created_at | TIMESTAMP | Product creation time |
+| updated_at | TIMESTAMP | Last update time |
 
-## Deploy on Vercel
+### Price History Table
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+| Field | Type | Description |
+|---------|---------|-------------|
+| id | UUID | Unique history record |
+| product_id | UUID | Associated product |
+| price | NUMERIC | Recorded product price |
+| currency | TEXT | Product currency |
+| checked_at | TIMESTAMP | Time when price was checked |
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## 🚀 Deployment
+
+The application is deployed on **Vercel** using a serverless architecture. The GitHub repository is connected to Vercel, enabling automatic deployments whenever new code is pushed.
+
+### Deployment Workflow
+
+```text
+Developer Pushes Code
+          ↓
+GitHub Repository Updated
+          ↓
+Vercel Detects Changes
+          ↓
+Build Process Starts
+          ↓
+Application Deployed
